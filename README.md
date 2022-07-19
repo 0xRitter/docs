@@ -121,3 +121,55 @@ query Assets721s(
 
 Query Variables: {"where":{"owner": {"equals": "0x9a70b15c2936d440c82eb988a20f11ef2cd79395"}}}
 ```
+
+
+## Metadata存储
+```
+mutation CustomCreateNFTMeta(
+  $Artists: [String!]
+  $AudioTrack: String!
+  $CoverArtwork: String!
+  $TrackInfo: String
+	$TrackDescription: String
+	$Title: String
+	$RecordLabel: [String]
+	$Tiers: [MetadataTierJson!]!
+  $VibeProperties: [MetadataAttribute!]
+){
+  customCreateNFTMeta(
+    Artists: $Artists
+    AudioTrack: $AudioTrack
+    CoverArtwork: $CoverArtwork
+    TrackInfo: $TrackInfo
+    TrackDescription: $TrackDescription
+    Title: $Title
+    RecordLabel: $RecordLabel
+    Tiers: $Tiers
+    VibeProperties: $VibeProperties
+  ) {
+    baseUri
+    success
+  }
+}
+
+Query Variables:
+{
+  "Artists": ["Artist1"],
+  "AudioTrack": "https://audioTrack.com",
+  "CoverArtwork": "https://coverArtwork",
+  "TrackInfo": "trackInfo",
+  "TrackDescription": "trackDescription",
+  "Title": "title",
+  "RecordLabel": ["recordLabel"],
+  "Tiers": [{
+    "TierID": 1,
+    "TierName": "tierName1",
+    "StartID": 0,
+    "EndID": 9,
+    "Attributes": [{
+      "TraitType": "autograph",
+      "Value": "https://autograph.com"
+    }]
+  }]
+}
+```
