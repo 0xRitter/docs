@@ -173,3 +173,40 @@ Query Variables:
   }]
 }
 ```
+
+
+## 分页步骤
+```
+1. 先取回所需数据的总数
+query Record721sCount(
+  $where: record_721WhereInput!
+){
+  record721sCount(where: $where) 
+}
+Query Variables: {"where": {}}
+
+
+2. 分页获取, 偏移skip: 0, 条数take: 2
+query Record721s(
+  $where: record_721WhereInput!
+  $take: Int
+  $skip: Int!
+){
+  record721s(where: $where, take: $take, skip: $skip) {
+    id
+    height
+    tx_hash
+    tx_time
+    token
+    name
+    symbol
+    owner
+    base_uri
+    created_time
+    updated_time
+  }
+}
+Query Variables: {"where":{},"take": 2, "skip": 0}
+
+注意，需要两个请求的where条件相同
+```
