@@ -210,3 +210,44 @@ Query Variables: {"where":{},"take": 2, "skip": 0}
 
 注意，需要两个请求的where条件相同
 ```
+
+## 获取所有拍卖池子
+```
+query AuctionPools(
+    $where: auction_poolWhereInput!
+){
+  auctionPools(where: $where) {
+    id
+    height
+    tx_hash
+    tx_time
+    creator
+    pool_id
+    name
+    token0
+    token1
+    token_id
+    token_amount0
+    swapped_amount0
+    amount_total1
+    amount_max1
+    amount_min1
+    amount_min_incr1
+    price
+    duration
+    open_at
+    close_at
+    nft_type
+    auction_type
+    creator_claimed
+    bidder_claimed
+    state
+    royalty_receiver
+    royalty_ratio
+    created_time
+    updated_time
+  }
+}
+
+Query Variables: {"where": {}}
+```
